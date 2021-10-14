@@ -17,12 +17,12 @@
             <div class="inner">
                 <h3 class="masthead-brand">CookUni</h3>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link" href="#">Home</a>
-                    <a class="nav-link" href="#">Welcome, {{names}}!</a>
-                    <a class="nav-link" href="#">Share recipe</a>
-                    <a class="nav-link" href="#">Logout</a>
-                    <a class="nav-link" href="#">Login</a>
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="#home" id="homeRoute">Home</a>
+                    <a class="nav-link hide" href="#profile" id="profileRoute">Welcome, {{names}}!</a>
+                    <a class="nav-link hide" href="#" id="shareRecipeRoute">Share recipe</a>
+                    <a class="nav-link hide" href="#" id="logoutRoute">Logout</a>
+                    <a class="nav-link" href="#login" id="loginRoute">Login</a>
+                    <a class="nav-link" href="#register" id="registerRoute" onclick=registerRoute()>Register</a>
                 </nav>
             </div>
         </header>
@@ -33,20 +33,20 @@
             <div id="errorBox" class="alert alert-danger" role="alert">{Error Message...}</div>
         </div>
 
-        <main role="main" class="inner cover mt-5">
+        <main role="main" class="inner cover mt-5" id="home">
             <h1 class="cover-heading">Coooooking University</h1>
             <p class="lead">They say that food passes through the stomach, we say that food passes through CookUni...
             </p>
         </main>
 
-        <h1 class="text-center">Our Recipes</h1>
+        <h1 class="text-center hide" >Our Recipes</h1>
 
-        <div id='foodNotFound'>
+        <div id='foodNotFound' class="hide">
             <img src="https://t4.ftcdn.net/jpg/00/62/17/31/240_F_62173114_ozantkVtkPgzL0fxssAkTqKX1FHPr0UW.jpg" />
             <h3>Food not found...</h3>
         </div>
 
-        <div id="sharedRecipes">
+        <div id="sharedRecipes" class="hide">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container" class="hide">
                 <div class="row">
 
                     <!--Grain-Food-Template-->
@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container" class="hide">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="our-team-main">
@@ -147,7 +147,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container" class="hide">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="our-team-main">
@@ -180,7 +180,7 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container" class="hide">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="our-team-main">
@@ -214,7 +214,7 @@
             </div>
         </div>
 
-        <div class="row form-layout p-5">
+        <div class="row form-layout p-5 hide">
             <div class="col-md-12">
                 <div class="recepieInfo">
                     <div class="detailsFoodImage">
@@ -234,7 +234,7 @@
                     </div>
                 </div>
 
-                <div class="detailsIngredients">
+                <div class="detailsIngredients" class="hide">
                     <h3 class="my-3 ingredient">Ingredients</h3>
                     <ul>
                         <li>First ingredient</li>
@@ -246,7 +246,7 @@
             </div>
         </div>
 
-        <form class="text-center p-5 form-layout" action="#" method="POST" id="share-receipt-form">
+        <form class="text-center p-5 form-layout hide" action="#" method="POST" id="share-receipt-form">
             <p class="h4 mb-4">Share Recipe</p>
 
             <input type="text" id="defaultRecepieShareMeal" name="meal" class="form-control mb-4" placeholder="Meal">
@@ -275,7 +275,7 @@
             <button class="btn btn-danger w-25 m-auto my-4 btn-block" type="submit">Share it</button>
         </form>
 
-        <form class="text-center p-5 form-layout" action="#" method="POST" id="edit-receipt-form">
+        <form class="text-center p-5 form-layout hide" action="#" method="POST" id="edit-receipt-form">
             <p class="h4 mb-4">Edit Recipe</p>
         
             <input type="text" id="defaultRecepieEditMeal" name="meal" class="form-control mb-4" placeholder="Meal"
@@ -305,7 +305,7 @@
         
         </form>
 
-        <form class="text-center p-5 form-layout" action="#" method="POST">
+        <form class="text-center p-5 form-layout hide" action="#" method="POST" id="register">
 
             <p class="h4 mb-4">Sign up</p>
 
@@ -313,27 +313,27 @@
                 <div class="col">
 
                     <input type="text" id="defaultRegisterFormFirstName" class="form-control" name="firstName"
-                        placeholder="First name">
+                        placeholder="First name" minlength="2">
                 </div>
                 <div class="col">
 
                     <input type="text" id="defaultRegisterFormLastName" class="form-control" name="lastName"
-                        placeholder="Last name">
+                        placeholder="Last name" minlength="2">
                 </div>
             </div>
 
             <input type="text" id="defaultRegisterFormUsername" class="form-control mb-4" name="username"
-                placeholder="Username">
+                placeholder="Username" minlength="3">
             <input type="password" id="defaultRegisterFormPassword" class="form-control" name="password"
-                placeholder="Password">
+                placeholder="Password" minlength="6">
             <hr>
             <input type="password" id="defaultRegisterRepeatPassword" class="form-control" name="repeatPassword"
                 placeholder="Repeat Password">
-            <button class="btn btn-danger my-4 btn-block w-25 m-auto" type="submit">Sign up</button>
+            <button class="btn btn-danger my-4 btn-block w-25 m-auto" type="submit" onclick="register()">Sign up</button>
 
         </form>
 
-        <form class="text-center p-5 form-layout" action="#" method="POST">
+        <form class="text-center p-5 form-layout hide" action="#" method="POST">
 
             <p class="h4 mb-4">Sign in</p>
 
@@ -355,6 +355,20 @@
             <i class="fa fa-heart"></i>
         </footer>
     </div>
+    <script>
+
+        function checkLocation(){
+        let hash = window.location.href.split('#')[1] || '';
+        console.log(hash)
+        hash = window.location.hash
+        console.log(hash)
+        }
+        setInterval(checkLocation,1000)
+            
+            
+    </script>
+    <script src="app.js"></script>
+
 </body>
 
 <!-- Libraries -->
@@ -363,7 +377,6 @@
 <script src="./node_modules/handlebars/dist/handlebars.js"></script>
 <script src="./node_modules/sammy/lib/sammy.js"></script>
 <script src="./node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
-
 <!--My Libraries-->
 <!--????-->
 <!--????-->
